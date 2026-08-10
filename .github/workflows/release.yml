@@ -77,6 +77,7 @@ jobs:
         run: |
           mapfile -t files < <(find artifacts -type f)
           gh release create "${{ github.ref_name }}" \
+            --repo "${{ github.repository }}" \
             --draft \
             --title "Synth ${{ github.ref_name }}" \
             --notes "Download the installer for your platform below. 100% local, no backend, no telemetry." \
