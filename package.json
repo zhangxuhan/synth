@@ -1,0 +1,42 @@
+{
+  "name": "synth",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Turn any PDF, article or note into browsable, askable, reviewable knowledge cards. 100% local, no API key.",
+  "keywords": [
+    "ai",
+    "study",
+    "flashcards",
+    "spaced-repetition",
+    "knowledge-graph",
+    "rag",
+    "local-first",
+    "ollama",
+    "pdf",
+    "anki"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/smoke.mjs",
+    "check": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^4.7.76",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "esbuild": "^0.21.5",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
+  }
+}
