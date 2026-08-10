@@ -75,9 +75,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          mapfile -t files < <(find artifacts -type f)
           gh release create "${{ github.ref_name }}" \
             --draft \
             --title "Synth ${{ github.ref_name }}" \
             --notes "Download the installer for your platform below. 100% local, no backend, no telemetry." \
-            artifacts/* || true
-          gh release upload "${{ github.ref_name }}" artifacts/* --clobber
+            "${files[@]}"
