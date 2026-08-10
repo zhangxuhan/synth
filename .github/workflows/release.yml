@@ -46,14 +46,38 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
-      - name: Build and release Tauri app
-        uses: tauri-apps/tauri-action@v0
+      - name: Build Tauri app (no release)
+        run: npm run tauri:build -- ${{ matrix.args }}
+
+      - name: Upload bundle artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundles-${{ matrix.platform }}${{ matrix.args && '-' }}${{ matrix.args }}
+          path: |
+            src-tauri/target/**/bundle/**/*.msi
+            src-tauri/target/**/bundle/**/*.exe
+            src-tauri/target/**/bundle/**/*.dmg
+            src-tauri/target/**/bundle/**/*.app.tar.gz
+            src-tauri/target/**/bundle/**/*.AppImage
+            src-tauri/target/**/bundle/**/*.deb
+          if-no-files-found: ignore
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Create GitHub Release and upload all bundles
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: ${{ github.ref_name }}
-          releaseName: 'Synth ${{ github.ref_name }}'
-          releaseBody: 'Download the installer for your platform below. 100% local, no backend, no telemetry.'
-          releaseDraft: true
-          prerelease: false
-          args: ${{ matrix.args }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --draft \
+            --title "Synth ${{ github.ref_name }}" \
+            --notes "Download the installer for your platform below. 100% local, no backend, no telemetry." \
+            artifacts/* || true
+          gh release upload "${{ github.ref_name }}" artifacts/* --clobber
