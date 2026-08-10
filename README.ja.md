@@ -49,31 +49,25 @@ Synth は**チャット優先ではなくカード優先**です。資料は構�
 - **設定ゼロ** —— 既定の抽出器は完全オフラインかつ決定的。より高品質が欲しいときだけ Ollama を有効にします。
 - **端末の外に出ない** —— バックエンドもテレメトリもなし。すべてブラウザの `localStorage` に保存されます。
 
-## クイックスタート
+## はじめに —— インストール不要
 
-```bash
-git clone https://github.com/zhangxuhan/synth.git
-cd synth
-npm install
-npm run dev
-```
+Synth を使うにはゼロ設定の方法が 2 つあります。ソースをビルドしたり改造したりしない限り（下の「開発者向け」参照）、npm は一切不要です。
 
-http://localhost:5173 を開いて「サンプルを試す」をクリック。オンボーディングはこれだけです。
+### 1. ウェブアプリ —— 開くだけですぐ使える
 
-`npm run build` で生成される `dist/` は純粋な静的サイトなので、GitHub Pages・Netlify・
-Cloudflare Pages にそのままデプロイできます。
+▶ **[ライブデモ](https://zhangxuhan.github.io/synth/)** —— クリックして開始。ダウンロードも登録も npm も不要です。
 
-### デスクトップ版（Windows / macOS / Linux）
+### 2. デスクトップ版 —— ダウンロードしてダブルクリック
 
-ブラウザのタブではなくネイティブアプリがいいなら、[GitHub Releases](https://github.com/zhangxuhan/synth/releases) からプリビルド済みインストーラを取得してください。ダブルクリックでインストールし、完全オフラインで動作します。ウェブ版と同じ機能で、データはあなたの端末に保存されます。
+[GitHub Releases](https://github.com/zhangxuhan/synth/releases) からプリビルド済みインストーラ（v0.2.0）を取得してください。
 
-自分でビルドする場合：
+| プラットフォーム | インストーラ |
+| ---------------- | ------------ |
+| Windows          | `Synth_0.2.0_x64-setup.exe` · `Synth_0.2.0_x64_en-US.msi` |
+| macOS            | `Synth_0.2.0_aarch64.dmg`（Apple シリコン）· `Synth_0.2.0_x64.dmg`（Intel） |
+| Linux            | `Synth_0.2.0_amd64.AppImage` · `Synth_0.2.0_amd64.deb` |
 
-```bash
-npm install
-npm run tauri:dev      # ホットリロード付き開発
-npm run tauri:build    # インストーラは src-tauri/target/release/bundle/ に出力
-```
+ダブルクリックでインストール。完全オフラインで動作し、ウェブ版と同じ機能、データはあなたの端末に保存されます。
 
 ### 任意：ローカル LLM でカードの質を上げる
 
@@ -86,6 +80,20 @@ OLLAMA_ORIGINS='*' ollama serve
 
 上部バーの「ローカルモデル」を有効にします。Ollama に接続できない場合は自動的にオフライン抽出へ
 フォールバックするため、行き止まりにはなりません。
+
+### 開発者向け —— ソースからビルド
+
+```bash
+git clone https://github.com/zhangxuhan/synth.git
+cd synth
+npm install
+npm run dev           # ウェブアプリは http://localhost:5173
+npm run tauri:dev     # ホットリロード付きデスクトップ開発
+npm run tauri:build   # インストーラは src-tauri/target/release/bundle/ に出力
+```
+
+`npm run build` で生成される `dist/` は純粋な静的サイトなので、GitHub Pages・Netlify・
+Cloudflare Pages にそのままデプロイできます。
 
 ## キーボードショートカット
 

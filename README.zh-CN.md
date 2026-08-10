@@ -49,30 +49,25 @@ Synth 是**卡组优先**，不是聊天优先。资料会变成一组结构化�
 - **零配置** —— 默认的抽取器完全离线且结果确定。只有想要更高质量时，才需要打开 Ollama。
 - **数据不出本机** —— 没有后端，没有埋点，全部存在浏览器 `localStorage` 里。
 
-## 快速开始
+## 快速开始 —— 无需安装
 
-```bash
-git clone https://github.com/zhangxuhan/synth.git
-cd synth
-npm install
-npm run dev
-```
+用 Synth 有两条零配置的路。除非你想自己编译或改代码（见下方「开发者 / 从源码构建」），否则完全不需要 npm。
 
-打开 http://localhost:5173 ，点「一键体验示例」。上手流程就这一步。
+### 1. 网页版 —— 打开就能用
 
-`npm run build` 产出的 `dist/` 是纯静态站点，可以直接部署到 GitHub Pages、Netlify 或 Cloudflare Pages。
+▶ **[在线体验](https://zhangxuhan.github.io/synth/)** —— 点开即用，不用下载、不用注册、不用 npm。
 
-### 桌面版（Windows / macOS / Linux）
+### 2. 桌面版 —— 下载双击安装
 
-比起浏览器标签页，更想要一个原生应用？去 [GitHub Releases](https://github.com/zhangxuhan/synth/releases) 下载预编译安装包——双击安装，完全离线运行，和网页版一模一样，数据存在你自己的电脑上。
+到 [GitHub Releases](https://github.com/zhangxuhan/synth/releases) 取预编译安装包（v0.2.0）：
 
-想自己构建：
+| 平台    | 安装包 |
+| ------- | ------ |
+| Windows | `Synth_0.2.0_x64-setup.exe` · `Synth_0.2.0_x64_en-US.msi` |
+| macOS   | `Synth_0.2.0_aarch64.dmg`（Apple 芯片）· `Synth_0.2.0_x64.dmg`（Intel） |
+| Linux   | `Synth_0.2.0_amd64.AppImage` · `Synth_0.2.0_amd64.deb` |
 
-```bash
-npm install
-npm run tauri:dev      # 带热更新的开发模式
-npm run tauri:build    # 安装包输出在 src-tauri/target/release/bundle/
-```
+双击安装即可，完全离线运行，和网页版一模一样，数据存在你自己的电脑上。
 
 ### 可选：用本地大模型提升卡片质量
 
@@ -84,6 +79,19 @@ OLLAMA_ORIGINS='*' ollama serve
 ```
 
 然后在顶栏打开「本地模型」。如果连不上 Ollama，Synth 会自动退回离线抽取器，不会卡死在半路。
+
+### 开发者 / 从源码构建
+
+```bash
+git clone https://github.com/zhangxuhan/synth.git
+cd synth
+npm install
+npm run dev           # 网页版，地址 http://localhost:5173
+npm run tauri:dev     # 桌面版，带热更新
+npm run tauri:build   # 安装包输出在 src-tauri/target/release/bundle/
+```
+
+`npm run build` 产出的 `dist/` 是纯静态站点，可以直接部署到 GitHub Pages、Netlify 或 Cloudflare Pages。
 
 ## 快捷键
 

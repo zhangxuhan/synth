@@ -49,33 +49,26 @@ skim, connect, question and *actually memorise* — chat is just a side panel.
 - **Zero config** — the default extractor is fully offline and deterministic. Toggle Ollama on only if you want LLM-quality cards.
 - **Nothing leaves your machine** — no backend, no telemetry. Everything lives in `localStorage`.
 
-## Quick start
+## Get started — no install required
 
-```bash
-git clone https://github.com/zhangxuhan/synth.git
-cd synth
-npm install
-npm run dev
-```
+You have two zero-setup ways to use Synth. You never need npm unless you want to build or hack on
+the source (see *For developers* below).
 
-Open http://localhost:5173 and click **Try the sample**. That is the whole onboarding.
+### 1. Web app — open and use
 
-Build a static bundle with `npm run build` — the output in `dist/` is a plain static site,
-deployable to GitHub Pages, Netlify or Cloudflare Pages as-is.
+▶ **[Try it live](https://zhangxuhan.github.io/synth/)** — click and start. No download, no sign-up, no npm.
 
-### Desktop app (Windows / macOS / Linux)
+### 2. Desktop app — download & double-click
 
-Prefer a native app over a browser tab? Grab a prebuilt installer from
-[GitHub Releases](https://github.com/zhangxuhan/synth/releases) — double-click and it runs
-fully offline, exactly like the web app, with your data stored on your machine.
+Grab a prebuilt installer from [GitHub Releases](https://github.com/zhangxuhan/synth/releases) (v0.2.0):
 
-To build it yourself:
+| Platform | Installer |
+| -------- | --------- |
+| Windows  | `Synth_0.2.0_x64-setup.exe` · `Synth_0.2.0_x64_en-US.msi` |
+| macOS    | `Synth_0.2.0_aarch64.dmg` (Apple Silicon) · `Synth_0.2.0_x64.dmg` (Intel) |
+| Linux    | `Synth_0.2.0_amd64.AppImage` · `Synth_0.2.0_amd64.deb` |
 
-```bash
-npm install
-npm run tauri:dev      # dev with hot reload
-npm run tauri:build    # produce installers in src-tauri/target/release/bundle/
-```
+Double-click to install. It runs fully offline, just like the web app, with your data stored on your machine.
 
 ### Optional: better cards with a local LLM
 
@@ -88,6 +81,19 @@ OLLAMA_ORIGINS='*' ollama serve
 
 Then enable **Local model** in the top bar. If Ollama is unreachable, Synth silently falls back
 to the offline extractor — you never hit a dead end.
+
+### For developers — build from source
+
+```bash
+git clone https://github.com/zhangxuhan/synth.git
+cd synth
+npm install
+npm run dev          # web app at http://localhost:5173
+npm run tauri:dev    # desktop app with hot reload
+npm run tauri:build  # installers in src-tauri/target/release/bundle/
+```
+
+`npm run build` outputs a plain static site in `dist/` — deployable to GitHub Pages, Netlify or Cloudflare Pages as-is.
 
 ## Keyboard shortcuts
 
