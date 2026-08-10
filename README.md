@@ -13,6 +13,8 @@
 
 **English** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
+**▶ Try it live:** https://zhangxuhan.github.io/synth/
+
 <img src="docs/preview.png" alt="Synth screenshot" width="820">
 
 </div>

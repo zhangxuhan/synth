@@ -13,6 +13,8 @@
 
 [English](README.md) · **简体中文** · [日本語](README.ja.md)
 
+**▶ 在线体验：** https://zhangxuhan.github.io/synth/
+
 <img src="docs/preview.png" alt="Synth 界面截图" width="820">
 
 </div>
