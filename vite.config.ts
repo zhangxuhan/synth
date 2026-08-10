@@ -4,6 +4,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: { port: 5173 },
+  // Relative base so the built assets also work when served from a sub-path
+  // (e.g. GitHub Pages at https://user.github.io/synth/).
+  base: './',
   build: {
     // Keep the output dir as-is instead of emptying it. On some sandboxed
     // Windows environments fs.rmSync is intercepted and the build aborts
