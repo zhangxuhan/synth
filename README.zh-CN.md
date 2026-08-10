@@ -62,6 +62,18 @@ npm run dev
 
 `npm run build` 产出的 `dist/` 是纯静态站点，可以直接部署到 GitHub Pages、Netlify 或 Cloudflare Pages。
 
+### 桌面版（Windows / macOS / Linux）
+
+比起浏览器标签页，更想要一个原生应用？去 [GitHub Releases](https://github.com/zhangxuhan/synth/releases) 下载预编译安装包——双击安装，完全离线运行，和网页版一模一样，数据存在你自己的电脑上。
+
+想自己构建：
+
+```bash
+npm install
+npm run tauri:dev      # 带热更新的开发模式
+npm run tauri:build    # 安装包输出在 src-tauri/target/release/bundle/
+```
+
 ### 可选：用本地大模型提升卡片质量
 
 不装任何模型也能用。想要更精细的卡片，就跑一个 [Ollama](https://ollama.com)：
@@ -110,7 +122,7 @@ src/
 - [ ] 用本地 Whisper 支持 YouTube / 音频转写
 - [ ] 挖空（Cloze）卡片
 - [ ] 带媒体的真正 `.apkg` 导出
-- [ ] Tauri 桌面版（双击安装即用）
+- [x] Tauri 桌面版（双击安装即用）
 - [ ] 跨全部资料的统一图谱
 
 ## 参与贡献

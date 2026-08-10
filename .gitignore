@@ -4,3 +4,5 @@ dist
 *.local
 .vite
 .rt.bundle.mjs
+src-tauri/target/
+src-tauri/icons/android/

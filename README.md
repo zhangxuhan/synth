@@ -63,6 +63,20 @@ Open http://localhost:5173 and click **Try the sample**. That is the whole onboa
 Build a static bundle with `npm run build` — the output in `dist/` is a plain static site,
 deployable to GitHub Pages, Netlify or Cloudflare Pages as-is.
 
+### Desktop app (Windows / macOS / Linux)
+
+Prefer a native app over a browser tab? Grab a prebuilt installer from
+[GitHub Releases](https://github.com/zhangxuhan/synth/releases) — double-click and it runs
+fully offline, exactly like the web app, with your data stored on your machine.
+
+To build it yourself:
+
+```bash
+npm install
+npm run tauri:dev      # dev with hot reload
+npm run tauri:build    # produce installers in src-tauri/target/release/bundle/
+```
+
 ### Optional: better cards with a local LLM
 
 Synth works with no model at all. If you want richer cards, run [Ollama](https://ollama.com):
@@ -113,7 +127,7 @@ src/
 - [ ] YouTube / audio transcripts via local Whisper
 - [ ] Cloze deletion cards
 - [ ] True `.apkg` export with media
-- [ ] Tauri desktop build (double-click install)
+- [x] Tauri desktop build (double-click install)
 - [ ] Multi-document graph across your whole library
 
 ## Contributing

@@ -63,6 +63,18 @@ http://localhost:5173 を開いて「サンプルを試す」をクリック。�
 `npm run build` で生成される `dist/` は純粋な静的サイトなので、GitHub Pages・Netlify・
 Cloudflare Pages にそのままデプロイできます。
 
+### デスクトップ版（Windows / macOS / Linux）
+
+ブラウザのタブではなくネイティブアプリがいいなら、[GitHub Releases](https://github.com/zhangxuhan/synth/releases) からプリビルド済みインストーラを取得してください。ダブルクリックでインストールし、完全オフラインで動作します。ウェブ版と同じ機能で、データはあなたの端末に保存されます。
+
+自分でビルドする場合：
+
+```bash
+npm install
+npm run tauri:dev      # ホットリロード付き開発
+npm run tauri:build    # インストーラは src-tauri/target/release/bundle/ に出力
+```
+
 ### 任意：ローカル LLM でカードの質を上げる
 
 モデルなしでも動作します。より豊かなカードが欲しい場合は [Ollama](https://ollama.com) を起動してください。
@@ -113,7 +125,7 @@ src/
 - [ ] ローカル Whisper による YouTube / 音声の文字起こし
 - [ ] 穴埋め（Cloze）カード
 - [ ] メディア込みの本物の `.apkg` エクスポート
-- [ ] Tauri デスクトップ版（ダブルクリックでインストール）
+- [x] Tauri デスクトップ版（ダブルクリックでインストール）
 - [ ] ライブラリ全体を横断するグラフ
 
 ## コントリビュート
